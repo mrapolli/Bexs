@@ -20,7 +20,7 @@ public class CalcProcess {
 
     public Graph calculate(Graph graph, Node source) {
 
-        Set<Node> settledNodes = new HashSet<>();
+        var settledNodes = new HashSet<>();
         Set<Node> unsettledNodes = new HashSet<>();
         source.setPrice(0);
         unsettledNodes.add(source);
@@ -30,7 +30,7 @@ public class CalcProcess {
             unsettledNodes.remove(currentNode);
             for (Entry<Node, Integer> adjacencyPair : currentNode.getAdjacentNodes().entrySet()) {
                 Node adjacentNode = adjacencyPair.getKey();
-                Integer edgeWeigh = adjacencyPair.getValue();
+                var edgeWeigh = adjacencyPair.getValue();
 
                 if (!settledNodes.contains(adjacentNode)) {
                     calculateMinCost(adjacentNode, edgeWeigh, currentNode);
@@ -71,7 +71,7 @@ public class CalcProcess {
 
     private static Node getLowestPriceNode(Set<Node> unsettledNodes) {
         Node lowestPriceNode = null;
-        int lowestPrice = Integer.MAX_VALUE;
+        var lowestPrice = Integer.MAX_VALUE;
         for (Node node : unsettledNodes) {
             int nodePrice = node.getPrice();
             if (nodePrice < lowestPrice) {
@@ -83,7 +83,7 @@ public class CalcProcess {
     }
 
     private static void calculateMinCost(Node evaluationNode, Integer val, Node sourceNode) {
-        Integer price = sourceNode.getPrice();
+        var price = sourceNode.getPrice();
         if (price + val < evaluationNode.getPrice()) {
             evaluationNode.setPrice(price + val);
             var lowestPrice = new LinkedList<>(sourceNode.getCost());

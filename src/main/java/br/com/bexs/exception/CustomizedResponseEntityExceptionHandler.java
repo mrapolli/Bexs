@@ -41,8 +41,6 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
                                                                   HttpHeaders headers,
                                                                   HttpStatus status, WebRequest request) {
 
-
-
         var body = new LinkedHashMap<>();
         body.put("timestamp",  LocalDateTime.now());
         body.put("status", status.value());

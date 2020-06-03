@@ -24,16 +24,8 @@ public class Node {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Map<Node, Integer> getAdjacentNodes() {
         return adjacentNodes;
-    }
-
-    public void setAdjacentNodes(Map<Node, Integer> adjacentNodes) {
-        this.adjacentNodes = adjacentNodes;
     }
 
     public Integer getPrice() {

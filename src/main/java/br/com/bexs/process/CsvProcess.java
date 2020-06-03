@@ -12,14 +12,15 @@ import java.util.List;
 @Component
 public class CsvProcess {
 
-    private static File file = null;
-    private static String filePath;
+    private static File FILE = null;
+
+    private static String FILEPATH;
 
     public List<RouteModel> getCsvToNode(String path) {
 
         List<RouteModel> nodesList = new ArrayList<>();
         verify(path);
-        try(var br = new BufferedReader(new FileReader(file));) {
+        try(var br = new BufferedReader(new FileReader(FILE));) {
           String st;
             while ((st = br.readLine()) != null && !st.isEmpty()) {
 
@@ -42,26 +43,26 @@ public class CsvProcess {
 
     public void putRoute(String routeOrig, String routeDest, int cost) {
 
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(FILE, true))) {
             writer.append(routeOrig.toUpperCase() + "," + routeDest.toUpperCase() + "," + cost);
             writer.append('\n');
-            reloadFile(filePath);
+            reloadFile(FILEPATH);
 
         } catch (Exception e) {
-            log.error("Verifique seu arquivo de input " + filePath);
+            log.error("Verifique seu arquivo de input " + FILEPATH);
         }
     }
 
     public void reloadFile(String path) {
-        file = new File(path);
+        FILE = new File(path);
     }
 
     private void verify(String path){
         if (path != null && !path.isEmpty())
-            filePath = path;
+            FILEPATH = path;
 
-        if (file == null)
-            file = new File(path);
+        if (FILE == null)
+            FILE = new File(path);
     }
 
 
