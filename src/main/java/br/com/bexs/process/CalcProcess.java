@@ -5,7 +5,6 @@ import br.com.bexs.util.Graph;
 import br.com.bexs.util.Node;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -47,7 +46,7 @@ public class CalcProcess {
 
         for (RouteModel rota : routeModelList) {
 
-            nodeProcess.createNode(rota.getOrigem(), rota.getDestino(), rota.getCusto());
+            nodeProcess.createNode(rota.getOrigem(), rota.getDestino(), rota.getCost());
         }
 
         Graph graph = new Graph();

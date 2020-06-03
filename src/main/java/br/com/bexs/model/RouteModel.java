@@ -5,7 +5,7 @@ public class RouteModel {
 
     private String origem;
     private String destino;
-    private Integer custo;
+    private Integer cost;
 
 
     public String getOrigem() {
@@ -24,11 +24,11 @@ public class RouteModel {
         this.destino = destino;
     }
 
-    public Integer getCusto() {
-        return custo;
+    public Integer getCost() {
+        return cost;
     }
 
-    public void setCusto(Integer custo) {
-        this.custo = custo;
+    public void setCost(Integer cost) {
+        this.cost = cost;
     }
 }

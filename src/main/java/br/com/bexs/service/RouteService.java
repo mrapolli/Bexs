@@ -6,6 +6,7 @@ import br.com.bexs.process.CalcProcess;
 import br.com.bexs.process.CsvProcess;
 import br.com.bexs.util.Graph;
 import br.com.bexs.util.Node;
+import br.com.bexs.vo.RouteResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,13 +28,13 @@ public class RouteService {
 
     private static final String ERRO = "Verifique se sua entrada está no padrão NNN-NNN";
     private static final String TRY = "try again:";
+    private static final String BEST = "best route: ";
 
-    public String getRoute(String route) {
+    public RouteResponse getRoute(String route) {
         var result = process(null, route);
-        if(result.isEmpty()){
-           return TRY;
-        }
-        return result;
+        var response  = new RouteResponse();
+        response.setBestRoute(result);
+        return response;
 
     }
 
@@ -64,7 +65,7 @@ public class RouteService {
 
                 AtomicReference<Integer> price = new AtomicReference<>();
                 AtomicReference<String> name = new AtomicReference<>();
-                builder.append("best route: ");
+                builder.append(BEST);
                 for (Node node : graph.getNodes()) {
 
                     node.getCost().stream().filter(node1 -> node.getName().equals(origDest[1])).forEach(node1 -> {
@@ -76,13 +77,9 @@ public class RouteService {
                 }
 
                 builder.append(name + " > $" + price.get());
-                builder.append("\n");
-                builder.append(TRY);
                 log.info(builder.toString());
 
-            } else {
-                System.out.println(TRY);
-            }
+            } 
 
         }
 

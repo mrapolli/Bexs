@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Profile;
 
 import java.util.Scanner;
 
@@ -22,13 +23,16 @@ public class Application  implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args){
-        Scanner scanner = new Scanner(System.in);
+    public void run(String... args) {
+        if (args.length==1){
+            Scanner scanner = new Scanner(System.in);
         routeService.readFile(args[0]);
         System.out.println("please enter the route: ");
-        while(scanner.hasNext()){
-            routeService.process(args[0],scanner.next());
-         }
+        while (scanner.hasNext()) {
+            routeService.process(args[0], scanner.next());
+            System.out.println("try again: ");
+        }
+    }
     }
 
 }

@@ -2,7 +2,6 @@ package br.com.bexs.process;
 
 import br.com.bexs.util.Node;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;

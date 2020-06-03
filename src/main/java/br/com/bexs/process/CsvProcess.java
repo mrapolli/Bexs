@@ -27,7 +27,7 @@ public class CsvProcess {
                 var routeMode = new RouteModel();
                 routeMode.setOrigem(rotas[0]);
                 routeMode.setDestino(rotas[1]);
-                routeMode.setCusto(Integer.parseInt(rotas[2]));
+                routeMode.setCost(Integer.parseInt(rotas[2]));
                 nodesList.add(routeMode);
 
             }
