@@ -38,7 +38,9 @@ public class RouteController {
 
     @GetMapping("/route")
     public ResponseEntity route(@RequestParam String origDest) {
-        return ok(routeService.getRoute(origDest));
+        var  response = routeService.getRoute(origDest);
+        System.out.println("try again:");
+        return ok(response);
 
     }
 

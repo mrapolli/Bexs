@@ -32,7 +32,8 @@ public class CalcProcessTest {
         calcProcess.calculate(nodeO);
 
         var res = nodeO.getAdjacentNodes().keySet().stream().findFirst().get();
-        assertEquals(java.util.Optional.of(10), res.getPrice());
+        Integer integer = 10;
+        assertEquals(integer, res.getPrice());
     }
 
     @Test
@@ -43,7 +44,7 @@ public class CalcProcessTest {
         route.setCost(10);
         var graph = calcProcess.convertNode(Arrays.asList(route));
         var nodes = graph.getNodes().stream().findFirst().get();
-        assertEquals(nodes.getName(),route.getOrigem());
+        assertEquals(nodes.getName(),route.getDestino());
 
     }
 
@@ -58,6 +59,6 @@ public class CalcProcessTest {
         var res = node.getAdjacentNodes().keySet().stream().findFirst().get();
         Integer integer = 2147483647;
         assertEquals(integer, res.getPrice());
-        assertEquals(res.getName(),route.getOrigem());
+        assertEquals(res.getName(),route.getDestino());
     }
 }
