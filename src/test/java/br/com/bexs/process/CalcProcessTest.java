@@ -1,5 +1,6 @@
 package br.com.bexs.process;
 
+import br.com.bexs.Application;
 import br.com.bexs.model.RouteModel;
 import br.com.bexs.util.Node;
 import org.junit.Test;
@@ -15,7 +16,7 @@ import java.util.HashMap;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = Application.class)
 @AutoConfigureMockMvc
 public class CalcProcessTest {
 
