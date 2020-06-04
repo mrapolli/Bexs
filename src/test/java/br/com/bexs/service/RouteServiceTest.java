@@ -15,6 +15,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
@@ -39,6 +40,11 @@ public class RouteServiceTest {
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
             writer.append("GRU" + "," + "BRC" + "," + 10);
         }
+        var route = new RouteModel();
+        route.setOrigem("GRU");
+        route.setDestino("BRC");
+        route.setCost(10);
+        when(csvProcess.getCsvToNode(file.getAbsolutePath())).thenReturn(Arrays.asList(route));
         var result = routeService.process(file.getAbsolutePath(),"GRU-BRC");
         assertEquals(result,"best route: GRU - BRC > $10");
 

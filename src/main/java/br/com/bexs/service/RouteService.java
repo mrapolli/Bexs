@@ -61,7 +61,7 @@ public class RouteService {
 
             Node nd = calcProcess.getNode(origDest[0], graph);
             if (nd != null) {
-                graph = calcProcess.calculate(graph, nd);
+                calcProcess.calculate(nd);
 
                 AtomicReference<Integer> price = new AtomicReference<>();
                 AtomicReference<String> name = new AtomicReference<>();
@@ -79,7 +79,7 @@ public class RouteService {
                 builder.append(name + " > $" + price.get());
                 log.info(builder.toString());
 
-            } 
+            }
 
         }
 

@@ -3,6 +3,7 @@ package br.com.bexs.process;
 import br.com.bexs.model.RouteModel;
 import br.com.bexs.util.Graph;
 import br.com.bexs.util.Node;
+import br.com.bexs.util.NodeCreator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,9 +17,9 @@ import java.util.Set;
 public class CalcProcess {
 
     @Autowired
-    NodeProcess nodeProcess;
+    NodeCreator nodeCreator;
 
-    public Graph calculate(Graph graph, Node source) {
+    public void calculate(Node source) {
 
         var settledNodes = new HashSet<>();
         Set<Node> unsettledNodes = new HashSet<>();
@@ -39,18 +40,17 @@ public class CalcProcess {
             }
             settledNodes.add(currentNode);
         }
-        return graph;
     }
 
     public Graph convertNode(List<RouteModel> routeModelList) {
 
         for (RouteModel rota : routeModelList) {
 
-            nodeProcess.createNode(rota.getOrigem(), rota.getDestino(), rota.getCost());
+            nodeCreator.createNode(rota.getOrigem(), rota.getDestino(), rota.getCost());
         }
 
         Graph graph = new Graph();
-        graph.setNodes(nodeProcess.getNodes());
+        graph.setNodes(nodeCreator.getNodes());
 
         return graph;
     }

@@ -20,25 +20,22 @@ public class CsvProcess {
 
         List<RouteModel> nodesList = new ArrayList<>();
         verify(path);
-        try(var br = new BufferedReader(new FileReader(FILE));) {
-          String st;
-            while ((st = br.readLine()) != null && !st.isEmpty()) {
+        try(var br = new BufferedReader(new FileReader(FILE))) {
 
-                var rotas = st.split(",");
+            br.lines().forEach(s -> {
+                var rotas = s.split(",");
                 var routeMode = new RouteModel();
                 routeMode.setOrigem(rotas[0]);
                 routeMode.setDestino(rotas[1]);
                 routeMode.setCost(Integer.parseInt(rotas[2]));
                 nodesList.add(routeMode);
 
-            }
+            });
+
         } catch (Exception e) {
             log.error("Erro leitura do arquivo ");
         }
-
-
         return nodesList;
-
     }
 
     public void putRoute(String routeOrig, String routeDest, int cost) {

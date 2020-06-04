@@ -1,4 +1,4 @@
-package br.com.bexs.process;
+package br.com.bexs.util;
 
 import br.com.bexs.util.Node;
 import org.springframework.stereotype.Component;
@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Component
-public class NodeProcess {
+public class NodeCreator {
 
     private Set<Node> nodes = new HashSet<>();
 
