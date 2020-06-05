@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -18,7 +19,7 @@
         <maven.version>3.7.0</maven.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-         <jdk.version>11</jdk.version>
+        <jdk.version>11</jdk.version>
     </properties>
 
     <dependencies>
@@ -74,11 +75,11 @@
             <version>1.3.9</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
-            <version>5.0</version>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>com.opencsv</groupId>-->
+        <!--            <artifactId>opencsv</artifactId>-->
+        <!--            <version>5.0</version>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>org.mapstruct</groupId>
@@ -86,7 +87,7 @@
             <version>1.3.0.Final</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -118,9 +119,9 @@
                         </path>
                         <path>
 
-                                <groupId>org.springframework</groupId>
-                                <artifactId>spring-core</artifactId>
-                                <version>5.2.6.RELEASE</version>
+                            <groupId>org.springframework</groupId>
+                            <artifactId>spring-core</artifactId>
+                            <version>5.2.6.RELEASE</version>
 
                         </path>
                     </annotationProcessorPaths>
@@ -155,14 +156,12 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <junitArtifactName> junit:junit:4.12 </junitArtifactName>
+                    <junitArtifactName>junit:junit:4.12</junitArtifactName>
                 </configuration>
             </plugin>
 
         </plugins>
     </build>
-
-
 
 
 </project>

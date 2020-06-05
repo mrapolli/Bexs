@@ -38,14 +38,14 @@ public class CalcProcessTest {
     }
 
     @Test
-    public void convertNodeTest(){
+    public void convertNodeTest() {
         var route = new RouteModel();
         route.setOrigem("GRU");
         route.setDestino("BRC");
         route.setCost(10);
         var graph = calcProcess.convertNode(Arrays.asList(route));
         var nodes = graph.getNodes().stream().findFirst().get();
-        assertEquals(nodes.getName(),route.getDestino());
+        assertEquals(nodes.getName(), route.getDestino());
 
     }
 
@@ -56,10 +56,10 @@ public class CalcProcessTest {
         route.setDestino("BRC");
         route.setCost(10);
         var graph = calcProcess.convertNode(Arrays.asList(route));
-        var node = calcProcess.getNode(route.getOrigem(),graph);
+        var node = calcProcess.getNode(route.getOrigem(), graph);
         var res = node.getAdjacentNodes().keySet().stream().findFirst().get();
         Integer integer = 2147483647;
         assertEquals(integer, res.getPrice());
-        assertEquals(res.getName(),route.getDestino());
+        assertEquals(res.getName(), route.getDestino());
     }
 }

@@ -32,7 +32,7 @@ public class RouteService {
 
     public RouteResponse getRoute(String route) {
         var result = process(null, route);
-        var response  = new RouteResponse();
+        var response = new RouteResponse();
         response.setBestRoute(result);
         return response;
 

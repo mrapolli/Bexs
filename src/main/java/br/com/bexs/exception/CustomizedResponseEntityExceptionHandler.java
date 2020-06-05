@@ -28,8 +28,8 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
     MessageSource messageSource;
 
     @ExceptionHandler(RouteException.class)
-    public final ResponseEntity<ExceptionResponse> handleAllExceptions(Throwable ex, WebRequest request ) {
-        var res = messageSource.getMessage(ex.getMessage(), null,  request.getLocale());
+    public final ResponseEntity<ExceptionResponse> handleAllExceptions(Throwable ex, WebRequest request) {
+        var res = messageSource.getMessage(ex.getMessage(), null, request.getLocale());
         ExceptionResponse exceptionResponse = new ExceptionResponse(LocalDateTime.now(), res,
                 request.getDescription(false));
         log.error(exceptionResponse.toString());
@@ -42,7 +42,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
                                                                   HttpStatus status, WebRequest request) {
 
         var body = new LinkedHashMap<>();
-        body.put("timestamp",  LocalDateTime.now());
+        body.put("timestamp", LocalDateTime.now());
         body.put("status", status.value());
 
         var errors = ex.getBindingResult()

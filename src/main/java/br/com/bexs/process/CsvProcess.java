@@ -20,7 +20,7 @@ public class CsvProcess {
 
         List<RouteModel> nodesList = new ArrayList<>();
         verify(path);
-        try(var br = new BufferedReader(new FileReader(FILE))) {
+        try (var br = new BufferedReader(new FileReader(FILE))) {
 
             br.lines().forEach(s -> {
                 var rotas = s.split(",");
@@ -40,7 +40,7 @@ public class CsvProcess {
 
     public void putRoute(String routeOrig, String routeDest, int cost) {
 
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(FILE, true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE, true))) {
             writer.append(routeOrig.toUpperCase() + "," + routeDest.toUpperCase() + "," + cost);
             writer.append('\n');
             reloadFile(FILEPATH);
@@ -54,7 +54,7 @@ public class CsvProcess {
         FILE = new File(path);
     }
 
-    private void verify(String path){
+    private void verify(String path) {
         if (path != null && !path.isEmpty())
             FILEPATH = path;
 

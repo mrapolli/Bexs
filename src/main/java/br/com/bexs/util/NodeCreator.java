@@ -1,6 +1,5 @@
 package br.com.bexs.util;
 
-import br.com.bexs.util.Node;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
@@ -12,18 +11,18 @@ public class NodeCreator {
     private Set<Node> nodes = new HashSet<>();
 
 
-    public void createNode(String nodeOrig , String nodeDest, Integer cost){
+    public void createNode(String nodeOrig, String nodeDest, Integer cost) {
 
         Node nodeO;
         Node nodeD;
 
         var nodOrigem = nodes.stream().filter(node ->
-           node.getName().equals(nodeOrig)
+                node.getName().equals(nodeOrig)
         ).findFirst();
 
-        if(nodOrigem.isPresent()){
+        if (nodOrigem.isPresent()) {
             nodeO = nodOrigem.get();
-        }else{
+        } else {
             nodeO = new Node(nodeOrig);
             nodes.add(nodeO);
         }
@@ -32,14 +31,14 @@ public class NodeCreator {
                 node.getName().equals(nodeDest)
         ).findFirst();
 
-        if(nodDestino.isPresent()){
+        if (nodDestino.isPresent()) {
             nodeD = nodDestino.get();
-        }else{
+        } else {
             nodeD = new Node(nodeDest);
             nodes.add(nodeD);
         }
 
-      nodeO.addDestination(nodeD,cost);
+        nodeO.addDestination(nodeD, cost);
 
     }
 

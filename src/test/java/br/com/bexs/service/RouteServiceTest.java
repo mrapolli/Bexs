@@ -34,7 +34,7 @@ public class RouteServiceTest {
     @Test
     public void processTest() throws IOException {
         File file = File.createTempFile("rotas.csv", null);
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
             writer.append("GRU" + "," + "BRC" + "," + 10);
         }
         var route = new RouteModel();
@@ -42,8 +42,8 @@ public class RouteServiceTest {
         route.setDestino("BRC");
         route.setCost(10);
         when(csvProcess.getCsvToNode(file.getAbsolutePath())).thenReturn(Arrays.asList(route));
-        var result = routeService.process(file.getAbsolutePath(),"GRU-BRC");
-        assertEquals(result,"best route: GRU - BRC > $10");
+        var result = routeService.process(file.getAbsolutePath(), "GRU-BRC");
+        assertEquals(result, "best route: GRU - BRC > $10");
 
     }
 
@@ -55,7 +55,7 @@ public class RouteServiceTest {
         route.setCost(10);
         when(csvProcess.getCsvToNode(null)).thenReturn(Arrays.asList(route));
         var result = routeService.getRoute("GRU-MIA");
-        assertEquals(result.getBestRoute(),"best route: GRU - MIA > $10");
+        assertEquals(result.getBestRoute(), "best route: GRU - MIA > $10");
 
     }
 
@@ -66,8 +66,8 @@ public class RouteServiceTest {
         route.setDestino("MIA");
         route.setCost(10);
         when(csvProcess.getCsvToNode(null)).thenReturn(Arrays.asList(route));
-        var result = routeService.persistRoute(route.getDestino(),route.getOrigem(),route.getCost());
-        assertEquals(result,true);
+        var result = routeService.persistRoute(route.getDestino(), route.getOrigem(), route.getCost());
+        assertEquals(result, true);
 
     }
 }

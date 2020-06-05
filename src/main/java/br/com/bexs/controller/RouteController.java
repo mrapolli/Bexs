@@ -38,7 +38,7 @@ public class RouteController {
 
     @GetMapping("/route")
     public ResponseEntity route(@RequestParam String origDest) {
-        var  response = routeService.getRoute(origDest);
+        var response = routeService.getRoute(origDest);
         System.out.println("try again:");
         return ok(response);
 
@@ -51,7 +51,7 @@ public class RouteController {
     })
     @PostMapping("/route")
     public ResponseEntity putRoute(@Valid @RequestBody RouteRequest data) {
-         return ok(routeService.persistRoute(data.getRotaOrigem(), data.getRotaDestino(), data.getCost()));
+        return ok(routeService.persistRoute(data.getRotaOrigem(), data.getRotaDestino(), data.getCost()));
 
     }
 

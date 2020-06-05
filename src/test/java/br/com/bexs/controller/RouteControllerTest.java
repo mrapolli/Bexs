@@ -39,7 +39,7 @@ public class RouteControllerTest {
 
     @Before
     public void setup() {
-         mockMvc = MockMvcBuilders
+        mockMvc = MockMvcBuilders
                 .webAppContextSetup(context)
                 .build();
 
@@ -64,7 +64,7 @@ public class RouteControllerTest {
         request.setRotaOrigem("GRU");
         request.setRotaDestino("MIA");
         request.setCost(0);
-        when(routeService.persistRoute(eq("GRU"),eq("MIA"),eq(0))).thenReturn(true);
+        when(routeService.persistRoute(eq("GRU"), eq("MIA"), eq(0))).thenReturn(true);
         mockMvc.perform(MockMvcRequestBuilders
                 .post("/calc/route")
                 .content(asJsonString(request))
@@ -72,7 +72,6 @@ public class RouteControllerTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
-
 
 
     private static String asJsonString(final Object obj) {

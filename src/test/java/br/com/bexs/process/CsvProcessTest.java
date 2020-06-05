@@ -51,9 +51,9 @@ public class CsvProcessTest {
     public void putRouteTest() throws IOException {
 
         csvProcess.getCsvToNode(file.getAbsolutePath());
-        csvProcess.putRoute("MIA","CDG",10);
+        csvProcess.putRoute("MIA", "CDG", 10);
 
-        try(var br = new BufferedReader(new FileReader(file))) {
+        try (var br = new BufferedReader(new FileReader(file))) {
             var compare = br.lines().filter(s -> s.equals("MIA,CDG,10")).findFirst();
             assertEquals("MIA,CDG,10", compare.get());
         }
